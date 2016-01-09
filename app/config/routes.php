@@ -4,15 +4,18 @@
 $routes = [
   //Index page.
   'index' => 'ExampleController@Index',
-
+  //Routes for GET request.
   'GET' => [
-
+    ['test', 'ExampleController@test']
   ],
+  //Routes for POST request.
   'POST' => [
 
   ],
+  //Routes for PUT request.
   'PUT' => [],
+  //Routes for DELETE request.
   'DELETE' =>  [],
   //Error route :
-  'error' => 'system/error'
+  'error' => 'Error@error_404'
 ];

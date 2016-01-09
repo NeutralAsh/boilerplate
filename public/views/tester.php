@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Example Index</title>
+    <title>Test</title>
   </head>
   <body>
-    <h1>Welcome to the Example Index</h1>
+    <h1>This is a test page for the routes.</h1>
   </body>
 </html>

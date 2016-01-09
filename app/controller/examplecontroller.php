@@ -10,4 +10,8 @@ class ExampleController {
     $this->Loader->view('home');
   }
 
+  public function test() {
+    $this->Loader->view('tester');
+  }
+
 }

@@ -79,13 +79,18 @@ class Router {
 
   //Look for a match between the URL and a route + URL params for GET request.
   private function match($url, $routes) {
+
+    if(empty($url)) {
+      return $this->routes['index'];
+    }
+
     //look at the route array
     foreach($routes as $route) {
       //$basic is the expected URL
       $basic = $route[0];
 
-      //If the URL match the URL
-      if(preg_match("/^$basic/", $url)) {
+      //If the URL match the Route
+      if(preg_match("/^\b($basic)\b/", $url)) {
           //If the route wait for params.
           if(count($route) == 3) {
             //baseUrl is the URL without any params.
@@ -107,8 +112,7 @@ class Router {
             //For the GET requests, get an error if the real number of params
             //doesn't match the expected number of params.
             if(count($this->params) != count($route[2]) && $_SERVER['REQUEST_METHOD'] == 'GET') {
-              $this->Loader->view($this->routes['error']);
-              die;
+              return $this->routes['error'];
             }
           }
         //return the route so it can still be used.
@@ -117,7 +121,7 @@ class Router {
     }
 
     //if nothing match, return the index page.
-    return $this->routes['index'];
+    return $this->routes['error'];
   }
 
   private function parse($route) {
